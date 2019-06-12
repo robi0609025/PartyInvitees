@@ -1,0 +1,64 @@
+﻿@model PartyInvitees.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Styles.css" />
+    <title>RsvpForm</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header text-center">
+            <h4>RSVP</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div>
+                    <p class="form-group">
+                        <label>Your Name  </label>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </p>
+                    <p class="form-group">
+                        <label>Your Email  </label>@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </p>
+                    <p class="form-group">
+                        <label>Your Phone  </label>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </p>
+                    @*<p>Your Phone : @Html.TextBox("Phone")</p>  Work same as above*@
+                    <p class="form-group">
+                        <label>Will you attend?  </label>
+                        @Html.DropDownListFor(m => m.WillAttend,
+                       new[] {
+                           new SelectListItem()
+                           {
+                               Text = "Yes, I will be there.",
+                               Value = bool.TrueString
+                           },
+                           new SelectListItem()
+                           {
+                               Text = "No, I can't come.",
+                               Value = bool.FalseString
+                           }
+                       },
+                       "Choose an option", new { @class = "form-control"}
+                       )
+                    </p>
+                    <p class="form-group text-center">
+                        <input class="btn btn-success" type="submit" value="Submit RSVP" />
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

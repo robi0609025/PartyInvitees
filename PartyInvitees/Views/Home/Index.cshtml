@@ -1,7 +1,28 @@
-﻿<p>
-    @ViewBag.Greetings World (From the view)
-</p>
-<p>
-    We are going to have an exciting party.<br>
-    (To do: Sell it better. Add picture or something.
-</p>
+﻿<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none;
+        }
+        body {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <p>
+            @ViewBag.Greetings World (From the view)
+        </p>
+        <p>
+            We are going to have an exciting party.<br>
+            (To do: Sell it better. Add picture or something.
+        </p>
+        <p class="btn btn-success" >
+            @Html.ActionLink("RSVP Now", "RsvpForm")
+        </p>
+    </div>
+</body>
